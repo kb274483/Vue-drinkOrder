@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Order System</title>
+    <link rel="shortcut icon" href="https://static.thenounproject.com/png/1480853-200.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <div id="appContainer">
+        <div class="appContainer">
+            <div class="sideBar">
+                <div class="pagination">
+                    <a href="#" @click.prevent="showDrinkMenu">飲料</a>
+                    <!--<a href="#" @click.prevent="showFoodMenu">食物</a>--測試項目-->
+                </div>
+
+                <ul class="drinkMenu sideMenu" v-if="menuSwitch">
+                    <li v-for="(item,index) in drinkItems" :key="item.itemName" @click="selected(item)"
+                        :class="{itemSelected : item.itemName === selectedTemp}">
+                        <h2>{{item.itemName}}</h2>
+                        <h3>{{item.englishName}}
+                            <span>${{item.price}}元</span>
+                        </h3>
+                    </li>
+                </ul>
+                <!----測試項目
+                <ul class="foodMenu sideMenu" v-else>
+                    <li v-for="item in foodItems" :key="item.itemName" @click="selected(item)"
+                    :class="{itemSelected : item.itemName === selectedTemp}">
+                        <h2>{{item.itemName}}</h2>
+                        <h3>{{item.englishName}}</h3>
+                        <span>${{item.price}}元</span>
+                    </li>
+                </ul>
+                --測試項目-->
+            </div>
+
+            <div class="mainMenu">
+                <div class="customSelect">
+                    <span>數量</span>
+                    <input class="itemQuantity" type="number" :value="temp.itemNum" v-model="temp.itemNum"
+                        @change="changeQuantity">
+
+                    <span>冰量</span>
+                    <label v-for="item in iceSelect" :key="item">
+                        <input type="radio" name="iceSelect" :id="item" :value="item" 
+                        v-model="temp.amountOfIce" :disabled="temp.amountOfIce == '不可調' ">
+                        <label :for="item">{{item}}</label>
+                    </label>
+
+                    <span>甜度</span>
+                    <label v-for="item in sugarSelect" :key="item">
+                        <input type="radio" name="sugarSelect" :id="item" :value="item" 
+                        v-model="temp.sugarLevel" :disabled="temp.sugarLevel == '不可調' ">
+                        <label :for="item">{{item}}</label>
+                    </label>
+
+                    <span>配料(每項10元)</span>
+                    <label v-for="item in toppingSelect" :key="item">
+                        <input type="checkbox" :id="item" :value="item" v-model="temp.topping">
+                        <label :for="item">{{item}}</label>
+                    </label> <br><br>
+
+                    <button type="button" class="cancelBTN" @click="clearTemp">取消</button>
+                    <button type="button" class="sendBTN" @click="makeOrderCart">送出</button>
+
+                    <span>備註</span>
+                    <textarea type="text" class="remark" v-model="temp.remarks"></textarea><br>
+                </div>
+
+                <div class="selectLock" :class="{lockOff : selectedTemp != ''}">請先選擇商品</div>
+                
+                <div class="cart">
+                    <h3>您訂購的商品</h3>
+                    <table class="tableContainer">
+                        <thead class="tableTitle">
+                            <tr class="tableTitleRow">
+                                <th class="name">品項</th>
+                                <th>冰塊</th>
+                                <th>甜度</th>
+                                <th class="topping">加料(每項10元)</th>
+                                <th>單價</th>
+                                <th>數量</th>
+                                <th>小計</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,index) in orderCart" :key="item.itemName">
+                                <td>{{item.itemName}}<br>
+                                    <small v-if="item.remarks != ''">備註: {{item.remarks}}</small>
+                                </td>
+                                <td>{{item.amountOfIce}}</td>
+                                <td>{{item.sugarLevel}}</td>
+                                <td>{{item.topping.toString()}}</td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.itemNum}}</td>
+                                <td>{{item.price*item.itemNum + item.topping.length*10*item.itemNum}}</td>
+                                <td @click="deleteItems(index)" class="deleteIcon"><img 
+                                    src="https://image.flaticon.com/icons/png/128/812/812853.png"
+                                    alt="delete-Icon" style="width: 20px; height: 20px;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="totalPrice" v-if="orderCart != '' ">總計:{{totalPrice}}元</div>
+                    <div class="submitOrder" v-if="orderCart != '' " @click="sendOrder">送出訂單</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="orderList" v-if="finalList != '' ">
+            <div class="listContainer">
+                <h3>您的訂單</h3>
+                <table class="tableContainer">
+                    <thead class="tableTitle">
+                        <tr class="tableTitleRow">
+                            <th class="name">品項</th>
+                            <th>冰塊</th>
+                            <th>甜度</th>
+                            <th class="topping">加料(每項10元)</th>
+                            <th>單價</th>
+                            <th>數量</th>
+                            <th>小計</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in finalList" :key="item.itemName">
+                            <td>{{item.itemName}}<br>
+                                <small v-if="item.remarks != ''">備註: {{item.remarks}}</small>
+                            </td>
+                            <td>{{item.amountOfIce}}</td>
+                            <td>{{item.sugarLevel}}</td>
+                            <td>{{item.topping.toString()}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.itemNum}}</td>
+                            <td>{{item.price*item.itemNum + item.topping.length*10*item.itemNum}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="orderDetails">訂單成立時間: {{orderTime}}</p>
+                <p class="orderDetails">餐點品項數量: {{finalList.length}}</p>
+                <p class="orderDetails">付款狀態:未付款</p>
+                <div class="totalPrice" v-if="finalList != '' "  id="position">總計:{{totalPrice}}元</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="JS/all.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,365 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*----------------------------------------------------------------------*/
+.appContainer {
+  font-family: 'Noto Sans TC', sans-serif;
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  background-color: #f5f1f1;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.appContainer .sideBar {
+  margin-right: 7px;
+  width: 300px;
+  min-height: 900px;
+  border-radius: 10px;
+  border: 3px solid #555555;
+  -webkit-box-shadow: #494949 1px 2px 2px 2px;
+          box-shadow: #494949 1px 2px 2px 2px;
+}
+
+.appContainer .sideBar .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 10px;
+}
+
+.appContainer .sideBar .pagination a {
+  text-align: center;
+  line-height: 30px;
+  width: 50px;
+  color: #000;
+  border-radius: 3px;
+  border: 1px solid #555555;
+  border-bottom: none;
+  background-color: #f8f3d3;
+}
+
+.appContainer .sideBar .pagination a:hover {
+  background-color: #fab96e;
+}
+
+.appContainer .sideBar .pagination .aLabelBg {
+  background-color: #f5f1f1;
+}
+
+.appContainer .sideBar .sideMenu {
+  margin: 10px;
+  margin-top: 0px;
+  padding: 30px;
+  border-radius: 3px;
+  background-color: #f8f3d3;
+}
+
+.appContainer .sideBar .sideMenu li {
+  border: 1px solid #555555;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.appContainer .sideBar .sideMenu li h3 {
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.appContainer .sideBar .sideMenu li:hover {
+  background-color: #fab96e;
+  cursor: pointer;
+}
+
+.appContainer .sideBar .sideMenu .itemSelected {
+  background-color: #fab96e;
+}
+
+.appContainer .mainMenu {
+  width: 650px;
+  border-radius: 10px;
+  border: 3px solid #555555;
+  -webkit-box-shadow: #494949 1px 2px 2px 2px;
+          box-shadow: #494949 1px 2px 2px 2px;
+  padding: 10px;
+}
+
+.appContainer .mainMenu .selectLock {
+  position: relative;
+  top: -495px;
+  z-index: 50;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  line-height: 470px;
+  width: 603px;
+  height: 490px;
+  background-color: rgba(61, 61, 61, 0.7);
+}
+
+.appContainer .mainMenu .lockOff {
+  visibility: hidden;
+}
+
+.appContainer .mainMenu .customSelect {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 2px solid #555555;
+  background-color: #f8f3d3;
+  -webkit-box-shadow: #494949 1px 2px 2px 2px;
+          box-shadow: #494949 1px 2px 2px 2px;
+}
+
+.appContainer .mainMenu .customSelect span {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.appContainer .mainMenu .customSelect .remark {
+  width: 200px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.appContainer .mainMenu .customSelect .sendBTN {
+  width: 180px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #ffe1e1;
+}
+
+.appContainer .mainMenu .customSelect .cancelBTN {
+  margin-right: 10px;
+  width: 180px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+}
+
+.appContainer .mainMenu .cart {
+  padding: 10px;
+  position: relative;
+  border-radius: 3px;
+  top: -480px;
+  border: 2px solid #555555;
+  background-color: #f8f3d3;
+  -webkit-box-shadow: #494949 1px 2px 2px 2px;
+          box-shadow: #494949 1px 2px 2px 2px;
+}
+
+.appContainer .mainMenu .cart h3 {
+  margin-bottom: 15px;
+}
+
+.appContainer .mainMenu .cart .tableContainer {
+  line-height: 25px;
+  text-align: center;
+}
+
+.appContainer .mainMenu .cart .tableContainer thead {
+  border: 1px #000 solid;
+  color: #f5f1f1;
+}
+
+.appContainer .mainMenu .cart .tableContainer thead tr {
+  background-color: #555555;
+}
+
+.appContainer .mainMenu .cart .tableContainer thead tr th {
+  border: 1px #000 solid;
+  padding: 0px 13px;
+}
+
+.appContainer .mainMenu .cart .tableContainer thead tr .name {
+  width: 75px;
+}
+
+.appContainer .mainMenu .cart .tableContainer thead tr .topping {
+  width: 120px;
+}
+
+.appContainer .mainMenu .cart .tableContainer tbody tr td small {
+  font-size: 6px;
+  color: lightslategrey;
+}
+
+.appContainer .mainMenu .cart .tableContainer tbody tr .deleteIcon {
+  cursor: pointer;
+}
+
+.appContainer .mainMenu .cart .totalPrice {
+  margin-top: 20px;
+  margin-right: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  text-align: right;
+}
+
+.appContainer .mainMenu .cart .submitOrder {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 300px;
+  margin-top: 20px;
+  line-height: 25px;
+  border: 1px solid #555555;
+  background-color: #f5f1f1;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.appContainer .mainMenu .cart .submitOrder:hover {
+  background-color: #fab96e;
+}
+
+.orderList {
+  max-width: 850px;
+  padding: 10px;
+  margin: 30px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #f5f1f1;
+}
+
+.orderList .listContainer {
+  width: 800px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  border: 3px solid #555555;
+  -webkit-box-shadow: #494949 1px 2px 2px 2px;
+          box-shadow: #494949 1px 2px 2px 2px;
+}
+
+.orderList .listContainer h3 {
+  text-align: center;
+}
+
+.orderList .listContainer .tableContainer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 25px;
+  text-align: center;
+}
+
+.orderList .listContainer .tableContainer thead {
+  border: 1px #000 solid;
+  color: #f5f1f1;
+}
+
+.orderList .listContainer .tableContainer thead tr {
+  background-color: #555555;
+}
+
+.orderList .listContainer .tableContainer thead tr th {
+  border: 1px #000 solid;
+  padding: 0px 25px;
+}
+
+.orderList .listContainer .tableContainer thead tr .name {
+  width: 100px;
+}
+
+.orderList .listContainer .tableContainer thead tr .topping {
+  width: 150px;
+}
+
+.orderList .listContainer .tableContainer tbody tr td small {
+  font-size: 6px;
+  color: lightslategrey;
+}
+
+.orderList .listContainer .tableContainer tbody tr .deleteIcon {
+  cursor: pointer;
+}
+
+.orderList .listContainer .orderDetails {
+  margin-top: 10px;
+}
+
+.orderList .listContainer .totalPrice {
+  margin-top: 20px;
+  margin-right: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  text-align: right;
+}
+/*# sourceMappingURL=style.css.map */

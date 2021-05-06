@@ -1,0 +1,301 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    text-decoration: none;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*----------------------------------------------------------------------*/
+$color-orange:#fab96e;
+$color-sendBtn:#ffe1e1;
+$color-selectArea:#f8f3d3;
+$color-BG:#f5f1f1;
+$color-box:#555555;
+
+
+.appContainer{
+    font-family: 'Noto Sans TC', sans-serif;
+    max-width: 950px;
+    margin-left: auto; margin-right: auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: $color-BG;
+    padding: 15px;
+    display: flex; justify-content: space-between;  
+    .sideBar{
+        margin-right: 7px;
+        width: 300px;
+        min-height: 900px;
+        border-radius: 10px;
+        border: 3px solid $color-box;
+        box-shadow: rgb(73, 73, 73) 1px 2px 2px 2px;
+        .pagination{
+            display: flex;
+            padding-left: 10px;
+            a{
+                text-align: center;
+                line-height: 30px;
+                width: 50px; color: #000;
+                border-radius: 3px;
+                border: 1px solid $color-box;
+                border-bottom: none;
+                background-color: $color-selectArea;
+            } 
+            a:hover{
+                background-color: $color-orange;
+            }
+            .aLabelBg{
+                background-color: $color-BG;
+            } 
+        }  
+        .sideMenu{
+            margin: 10px;
+            margin-top: 0px;
+            padding: 30px;
+            border-radius: 3px;
+            background-color: $color-selectArea;
+            li{
+                border: 1px solid $color-box;
+                padding: 10px;
+                border-radius: 3px;
+                margin-bottom: 20px;
+                h3{
+                    font-size: 14px;
+                    display: flex;
+                    justify-content: space-between;
+                }  
+                
+            }
+            li:hover{
+                background-color: $color-orange;
+                cursor: pointer;
+            }
+            .itemSelected{
+                background-color: $color-orange;
+            }
+        }
+    }
+    .mainMenu{
+        width: 650px;
+        border-radius: 10px;
+        border: 3px solid $color-box;
+        box-shadow: rgb(73, 73, 73) 1px 2px 2px 2px;
+        padding: 10px;
+        .selectLock{
+            position:relative; 
+            top:-495px ; z-index: 50;
+            font-size: 30px; color: white;
+            text-align: center;
+            line-height: 470px;
+            width:603px; height: 490px;
+            background-color:rgba($color: #3d3d3d, $alpha: 0.7);
+        }
+        .lockOff{
+            visibility: hidden;
+        }
+        .customSelect{
+            position:relative;
+            padding: 10px; margin-bottom: 10px;
+            border-radius: 3px;
+            border: 2px solid $color-box;
+            background-color: $color-selectArea;
+            box-shadow: rgb(73, 73, 73) 1px 2px 2px 2px;
+            span{
+                display: block;
+                margin-top: 20px;
+                margin-bottom: 5px;  
+            }
+            .remark{
+                width: 200px; height: 100px;
+                margin-bottom: 20px;
+            }
+            .sendBTN{
+                width: 180px; height: 40px;
+                border-radius: 3px;
+                background-color: $color-sendBtn;
+            }
+            .cancelBTN{
+                margin-right: 10px;
+                width: 180px; height: 40px;
+                border-radius: 3px;
+                background-color:#FFFFFF;
+            }
+        }
+        .cart{
+            padding: 10px; position: relative;
+            border-radius: 3px; top:-480px;
+            border: 2px solid $color-box;
+            background-color: $color-selectArea;
+            box-shadow: rgb(73, 73, 73) 1px 2px 2px 2px;
+            h3{
+                margin-bottom: 15px;
+            }
+            .tableContainer{
+                line-height: 25px;
+                text-align: center;
+                thead{
+                    border: 1px #000 solid;
+                    color: #f5f1f1;
+                    tr{
+                        background-color: #555555;
+                        th{
+                            border: 1px #000 solid;
+                            padding: 0px 13px;
+                        }
+                        .name{
+                            width: 75px;
+                        }
+                        .topping{
+                            width: 120px;
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        td{ 
+                            small{
+                                font-size: 6px;
+                                color: lightslategrey;
+                            }
+                        }
+                        .deleteIcon{
+                            cursor: pointer;
+                        }
+                    }
+                    
+                }
+                
+            }
+            .totalPrice{
+                margin-top: 20px;
+                margin-right: 5px;
+                font-size: 20px;
+                font-weight: bold;
+                color: red;
+                text-align: right;
+            }
+            .submitOrder{
+                margin-left: auto; margin-right: auto;
+                text-align: center; width: 300px;
+                margin-top: 20px; line-height: 25px;
+                border: 1px solid $color-box;
+                background-color: $color-BG;
+                border-radius: 3px; cursor: pointer;
+            }
+            .submitOrder:hover{
+                background-color: $color-orange;
+            }   
+        }
+    }
+}
+.orderList{
+    max-width: 850px; 
+    padding: 10px; 
+    margin: 30px 0px;
+    margin-left: auto; margin-right: auto;
+    box-sizing: border-box;
+    border-radius: 8px; 
+    background-color: $color-BG;
+    .listContainer{
+        width: 800px; padding: 10px; 
+        margin-left: auto; margin-right: auto;
+        border-radius: 8px;
+        border: 3px solid $color-box;
+        box-shadow: rgb(73, 73, 73) 1px 2px 2px 2px;
+        h3{
+            text-align: center;
+        }
+        .tableContainer{
+            margin-left: auto; margin-right: auto;
+            margin-top: 10px; margin-bottom: 20px;
+            line-height: 25px;
+            text-align: center;
+            thead{
+                border: 1px #000 solid;
+                color: #f5f1f1;
+                tr{
+                    background-color: #555555;
+                    th{
+                        border: 1px #000 solid;
+                        padding: 0px 25px;
+                    }
+                    .name{
+                        width: 100px;
+                    }
+                    .topping{
+                        width: 150px;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{ 
+                        small{
+                            font-size: 6px;
+                            color: lightslategrey;
+                        }
+                    }
+                    .deleteIcon{
+                        cursor: pointer;
+                    }
+                }
+                
+            }
+            
+        }
+        .orderDetails{
+            margin-top: 10px;
+        }
+        .totalPrice{
+            margin-top: 20px;
+            margin-right: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+            text-align: right;
+        }
+    }
+}
